@@ -1,0 +1,119 @@
+================================================================================
+CODEALPHA DATA ANALYTICS INTERNSHIP - TASK 2: EDA REPORT
+================================================================================
+Data source loaded: D:\codealpha\Web scraper\CodeAlpha_DataAnalytics\task2_eda\books_scraped.csv
+Initial shape: 1000 rows, 6 columns
+
+--------------------------------------------------------------------------------
+1. DATA QUALITY & INTEGRITY CHECK
+--------------------------------------------------------------------------------
+Missing Values per Column:
+  - title          : 0 nulls (0.00%)
+  - category       : 0 nulls (0.00%)
+  - price_gbp      : 0 nulls (0.00%)
+  - star_rating    : 0 nulls (0.00%)
+  - availability   : 0 nulls (0.00%)
+  - product_url    : 0 nulls (0.00%)
+
+Exact Duplicate Rows : 0
+Duplicate Book Titles: 1
+
+Data Types:
+  - title          : object
+  - category       : object
+  - price_gbp      : float64
+  - star_rating    : int64
+  - availability   : object
+  - product_url    : object
+
+--------------------------------------------------------------------------------
+2. DESCRIPTIVE STATISTICAL ANALYSIS
+--------------------------------------------------------------------------------
+Price (GBP) Statistical Profile:
+  - Count             : 1000
+  - Mean              : £35.07
+  - Standard Deviation: £14.45
+  - Minimum           : £10.00
+  - 25th Percentile Q1: £22.11
+  - Median (50th)     : £35.98
+  - 75th Percentile Q3: £47.46
+  - Maximum           : £59.99
+  - IQR (Q3 - Q1)     : £25.35
+  - Skewness          : -0.0375 (approx uniform distribution)
+  - Kurtosis          : -1.2101
+
+Price Outlier Analysis (1.5x IQR Fence: [£-15.92, £85.48]):
+  - Number of outliers: 0 (0.00%)
+
+Star Rating Profile (1 to 5 stars):
+  - Mean Rating       : 2.92 stars
+  - Median Rating     : 3.0 stars
+  - Modal Rating      : 1 stars
+
+Rating Breakdown:
+  - 1 Star(s)        :  226 books ( 22.6%)
+  - 2 Star(s)        :  196 books ( 19.6%)
+  - 3 Star(s)        :  203 books ( 20.3%)
+  - 4 Star(s)        :  179 books ( 17.9%)
+  - 5 Star(s)        :  196 books ( 19.6%)
+
+--------------------------------------------------------------------------------
+3. CATEGORY & GENRE ANALYSIS
+--------------------------------------------------------------------------------
+Total Unique Categories: 50
+
+Top 10 Categories by Volume (Book Count):
+  - Default                  : 152 books ( 15.2%) | Avg Price: £34.39 | Avg Rating: 2.84
+  - Nonfiction               : 110 books ( 11.0%) | Avg Price: £34.26 | Avg Rating: 2.88
+  - Sequential Art           :  75 books (  7.5%) | Avg Price: £34.57 | Avg Rating: 2.97
+  - Add a comment            :  67 books (  6.7%) | Avg Price: £35.80 | Avg Rating: 2.76
+  - Fiction                  :  65 books (  6.5%) | Avg Price: £36.07 | Avg Rating: 3.18
+  - Young Adult              :  54 books (  5.4%) | Avg Price: £35.45 | Avg Rating: 3.30
+  - Fantasy                  :  48 books (  4.8%) | Avg Price: £39.59 | Avg Rating: 3.08
+  - Romance                  :  35 books (  3.5%) | Avg Price: £33.93 | Avg Rating: 2.63
+  - Mystery                  :  32 books (  3.2%) | Avg Price: £31.72 | Avg Rating: 2.94
+  - Food and Drink           :  30 books (  3.0%) | Avg Price: £31.41 | Avg Rating: 2.90
+
+Top 5 Most Expensive Categories (Avg Price):
+  - New Adult                : Avg Price: £46.38 (from 6 books)
+  - Sports and Games         : Avg Price: £41.17 (from 5 books)
+  - Self Help                : Avg Price: £40.62 (from 5 books)
+  - Travel                   : Avg Price: £39.79 (from 11 books)
+  - Fantasy                  : Avg Price: £39.59 (from 48 books)
+
+Top 5 Most Affordable Categories (Avg Price):
+  - Food and Drink           : Avg Price: £31.41 (from 30 books)
+  - Thriller                 : Avg Price: £31.43 (from 11 books)
+  - Mystery                  : Avg Price: £31.72 (from 32 books)
+  - Business                 : Avg Price: £32.46 (from 12 books)
+  - Religion                 : Avg Price: £32.57 (from 7 books)
+
+Top 5 Highest Rated Categories (Avg Star Rating, min 5 books):
+  - Christian Fiction        : Avg Rating: 4.17 stars (6 books)
+  - Art                      : Avg Rating: 3.62 stars (8 books)
+  - Poetry                   : Avg Rating: 3.53 stars (19 books)
+  - Humor                    : Avg Rating: 3.40 stars (10 books)
+  - Spirituality             : Avg Rating: 3.33 stars (6 books)
+
+--------------------------------------------------------------------------------
+4. BIVARIATE & CORRELATION ANALYSIS (PRICE VS. RATING)
+--------------------------------------------------------------------------------
+Pearson Correlation (Linear)    : 0.0282
+Spearman Correlation (Rank)     : 0.0292
+Interpretation: Indicates negligible/no linear relationship. Book price does not influence or reflect review ratings.
+
+Average Price Breakdown by Star Rating:
+  - 1 Star(s): Count=226 | Mean=£34.56 | Median=£34.77 | Std=£13.95
+  - 2 Star(s): Count=196 | Mean=£34.81 | Median=£36.22 | Std=£13.61
+  - 3 Star(s): Count=203 | Mean=£34.69 | Median=£33.78 | Std=£14.70
+  - 4 Star(s): Count=179 | Mean=£36.09 | Median=£37.80 | Std=£15.08
+  - 5 Star(s): Count=196 | Mean=£35.37 | Median=£36.90 | Std=£15.05
+
+--------------------------------------------------------------------------------
+5. KEY TAKEAWAYS & BUSINESS INSIGHTS
+--------------------------------------------------------------------------------
+1. Distribution Shape: Book prices are uniformly distributed across £10 to £60 without severe skewness or distortion.
+2. Rating Independence: Book ratings are essentially independent of prices (r ≈ 0.0). High-priced books do not systematically receive better or worse ratings.
+3. Inventory Concentration: A small set of genres (Default, Nonfiction, Sequential Art, Romance) represent the overwhelming majority of inventory, while niche genres contain fewer titles.
+4. Pricing Tier Strategy: Retailers can implement tiered bundling strategies without customer resistance regarding ratings.
+================================================================================
